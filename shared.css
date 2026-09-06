@@ -177,6 +177,21 @@ table.datatable tr:last-child td{ border-bottom:1px solid var(--ink); }
 .sources li{ margin-bottom:8px; }
 .sources a{ color:var(--ink); }
 
+.subsec{
+  margin-top:28px; padding-top:24px; border-top:1px dashed var(--rule);
+  scroll-margin-top:24px;
+}
+.subsec-title{
+  font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--tab-gold); margin:0 0 14px; font-weight:600;
+}
+.confidence{
+  display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px;
+  padding:2px 7px; border:1px solid; letter-spacing:.03em;
+}
+.confidence.high{ color:var(--stamp-green); border-color:var(--stamp-green); }
+.confidence.low{ color:var(--stamp-red); border-color:var(--stamp-red); }
+
 ::selection{ background:#d9cfa9; }
 
 @media (max-width:860px){
