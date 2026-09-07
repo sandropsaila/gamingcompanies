@@ -192,6 +192,35 @@ table.datatable tr:last-child td{ border-bottom:1px solid var(--ink); }
 .confidence.high{ color:var(--stamp-green); border-color:var(--stamp-green); }
 .confidence.low{ color:var(--stamp-red); border-color:var(--stamp-red); }
 
+/* ---------- MGA licence table ---------- */
+table.lictable{ width:100%; border-collapse:collapse; font-size:14.5px; margin-top:4px; }
+table.lictable th, table.lictable td{ text-align:left; padding:11px 13px; border-bottom:1px solid var(--rule); vertical-align:top; }
+table.lictable th{ font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-soft); font-weight:500; letter-spacing:.03em; }
+table.lictable td.num{ font-family:'IBM Plex Mono'; font-size:13.5px; }
+table.lictable tr:last-child td{ border-bottom:1px solid var(--ink); }
+table.lictable a{ color:var(--ink); white-space:nowrap; }
+
+.lic-type{
+  display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; font-weight:600;
+  letter-spacing:.04em; padding:3px 8px; border-radius:2px; white-space:nowrap;
+}
+.lic-type.b2b{ background:var(--ink); color:var(--white); }
+.lic-type.b2c{ background:var(--tab-gold); color:var(--white); }
+.lic-type.rn{ background:transparent; color:var(--ink-soft); border:1px solid var(--ink-soft); }
+.lic-type.legacy{ background:transparent; color:var(--tab-gold); border:1px solid var(--tab-gold); }
+
+.lic-status{
+  display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; font-weight:600;
+  padding:2px 8px; border:1px solid; letter-spacing:.03em; white-space:nowrap;
+}
+.lic-status.licensed{ color:var(--stamp-green); border-color:var(--stamp-green); }
+.lic-status.expired, .lic-status.suspended{ color:var(--stamp-red); border-color:var(--stamp-red); }
+
+.na-box{
+  border:1px dashed var(--rule); padding:16px 18px; font-size:14.5px; color:var(--ink-soft);
+  background:var(--white);
+}
+
 ::selection{ background:#d9cfa9; }
 
 @media (max-width:860px){
