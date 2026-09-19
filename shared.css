@@ -165,12 +165,21 @@ table.datatable tr:last-child td{ border-bottom:1px solid var(--ink); }
   border:1px solid var(--stamp-green); padding:2px 8px; margin-left:8px; vertical-align:middle;
 }
 
-.malta-box, .deloitte-box{
+.malta-box, .deloitte-box, .negmedia-box{
   border:1px solid var(--ink); padding:22px 24px; background:var(--white);
 }
-.malta-box h4, .deloitte-box h4{ margin-top:0; font-size:17px; }
-.malta-box ul, .deloitte-box ul{ margin:10px 0 0; padding-left:20px; }
-.malta-box li, .deloitte-box li{ margin-bottom:8px; font-size:15px; }
+.malta-box h4, .deloitte-box h4, .negmedia-box h4{ margin-top:0; font-size:17px; }
+.malta-box ul, .deloitte-box ul, .negmedia-box ul{ margin:10px 0 0; padding-left:20px; }
+.malta-box li, .deloitte-box li, .negmedia-box li{ margin-bottom:8px; font-size:15px; }
+
+.media-tag{
+  display:inline-block; font-family:'IBM Plex Mono'; font-size:10.5px; font-weight:600;
+  padding:2px 8px; border:1px solid; letter-spacing:.03em; white-space:nowrap; margin-right:6px;
+}
+.media-tag.regulatory{ color:var(--stamp-red); border-color:var(--stamp-red); }
+.media-tag.legal{ color:var(--tab-gold); border-color:var(--tab-gold); }
+.media-tag.reputational{ color:var(--ink-soft); border-color:var(--ink-soft); }
+.media-tag.financial{ color:var(--ink); border-color:var(--ink); }
 
 .sources{ font-size:13.5px; color:var(--ink-soft); }
 .sources ol{ padding-left:20px; margin:0; }
