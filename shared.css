@@ -247,15 +247,120 @@ table.lictable a{ color:var(--ink); white-space:nowrap; }
 
 ::selection{ background:#d9cfa9; }
 
+/* ================= v2 refinement: look & feel + responsive ================= */
+:root{
+  --shadow:0 1px 2px rgba(28,43,58,.06), 0 6px 18px -8px rgba(28,43,58,.14);
+  --radius:3px;
+}
+body{ text-rendering:optimizeLegibility; overflow-wrap:break-word; }
+img,svg{ max-width:100%; height:auto; }
+a{ text-underline-offset:3px; }
+:focus-visible{ outline:2px solid var(--stamp-red); outline-offset:2px; }
+
+/* topbar: sticky, compact */
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px); background:rgba(239,238,232,.94); gap:16px; }
+.topbar .brand{ min-width:0; }
+.topbar .meta{ flex-shrink:0; max-width:50%; }
+
+/* index */
+.index-wrap h1{ font-size:clamp(30px,5vw,46px); line-height:1.1; letter-spacing:-.01em; }
+.folder{ border-radius:var(--radius); box-shadow:var(--shadow); }
+.folder:hover{ box-shadow:0 2px 4px rgba(28,43,58,.08), 0 14px 28px -12px rgba(28,43,58,.22); }
+.folder .go{ transition:background .15s, color .15s; }
+.folder:hover .go{ background:var(--ink); color:var(--white); }
+.folder h2{ padding-right:90px; }
+
+/* dossier */
+.toc{ top:64px; max-height:calc(100vh - 64px); overflow-y:auto; }
+.case-head h1{ font-size:clamp(30px,5vw,46px); line-height:1.1; letter-spacing:-.01em; }
+section.sec{ scroll-margin-top:88px; }
+section.sec h3{ display:flex; align-items:center; gap:10px; }
+section.sec h3::before{ content:""; width:18px; height:2px; background:var(--tab-gold); flex-shrink:0; }
+.brand-card, .person, .malta-box, .deloitte-box, .negmedia-box, .na-box, .chip{ border-radius:var(--radius); }
+.brand-card, .person{ box-shadow:var(--shadow); }
+.brand-card{ border-left:3px solid var(--tab-gold); }
+.malta-box{ border-left:4px solid var(--stamp-red); }
+.deloitte-box{ border-left:4px solid var(--stamp-green); }
+.note{ border-radius:var(--radius); }
+table.lictable tbody tr:hover td, table.datatable tbody tr:hover td{ background:rgba(169,130,79,.07); }
+table.lictable th, table.datatable th{ background:var(--paper-alt); text-transform:uppercase; font-size:10.5px; }
+.sources a, .sec a{ word-break:break-word; }
+
+/* tables: horizontal scroll rather than page overflow */
+.sec table.lictable, .sec table.datatable{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%; }
+.sec table.lictable > tbody, .sec table.datatable > tbody, .sec table.lictable > thead, .sec table.datatable > thead{ display:table; width:100%; min-width:560px; }
+
+/* ---------- tablet ---------- */
+@media (max-width:1020px){
+  .dossier-main{ padding:36px 32px 100px; }
+  .toc{ width:200px; padding-left:24px; }
+}
+/* ---------- phone / small tablet ---------- */
 @media (max-width:860px){
-  .dossier-shell{ flex-direction:column; }
-  .toc{ position:relative; width:100%; border-right:none; border-bottom:1px solid var(--rule); padding:24px 24px 10px; }
-  .toc ol{ display:flex; flex-wrap:wrap; gap:4px 10px; }
+  body{ font-size:16px; }
+  .dossier-shell{ flex-direction:column; align-items:stretch; }
+  .dossier-main{ width:100%; }
+  .toc{
+    position:sticky; top:57px; z-index:40; width:100%; max-height:none; overflow:visible;
+    border-right:none; border-bottom:1px solid var(--rule); padding:10px 0 0;
+    background:rgba(239,238,232,.96); backdrop-filter:blur(8px);
+  }
+  .toc-title{ display:none; }
+  .toc ol{
+    display:flex; flex-wrap:nowrap; gap:6px; overflow-x:auto; padding:0 16px 10px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .toc ol::-webkit-scrollbar{ display:none; }
+  .toc li{ margin:0; flex-shrink:0; }
+  .toc a{ border:1px solid var(--rule); border-left-width:1px; background:var(--white); padding:6px 11px; font-size:13px; white-space:nowrap; border-radius:999px; }
   .toc a::before{ display:none; }
-  .dossier-main{ padding:32px 24px 90px; }
-  .topbar{ padding:18px 20px; }
-  .index-wrap{ padding:44px 20px 80px; }
-  .folder{ flex-wrap:wrap; }
-  .folder .go{ margin-left:0; }
-  dl.fields{ grid-template-columns:140px 1fr; }
+  .toc a.back-link{ border:none; background:none; border-radius:0; padding:0 16px 8px; color:var(--ink-soft); }
+  .toc a.back-link:hover{ background:none; color:var(--ink); }
+  .sec table.lictable td, .sec table.datatable td{ min-width:96px; }
+  .toc a:hover, .toc a.active{ background:var(--ink); color:var(--white); border-color:var(--ink); }
+  .dossier-main{ padding:28px 18px 80px; }
+  .case-head{ margin-bottom:28px; }
+  section.sec{ margin-bottom:40px; scroll-margin-top:130px; }
+  .topbar{ padding:14px 16px; }
+  .topbar .brand{ font-size:17px; }
+  .topbar .brand small{ display:none; }
+  .topbar .meta{ font-size:10.5px; }
+  .index-wrap{ padding:36px 16px 70px; }
+  .index-wrap .lede{ margin-bottom:36px; }
+  .drawer{ gap:14px; }
+  .folder{ flex-wrap:wrap; gap:12px; padding:22px 18px 18px 16px; }
+  .folder .stamp{ top:10px; right:12px; }
+  .folder h2{ font-size:21px; padding-right:0; margin-top:16px; }
+  .folder .go{ margin-left:0; width:100%; text-align:center; }
+  dl.fields{ grid-template-columns:1fr; gap:2px 0; }
+  dl.fields dt{ margin-top:12px; }
+  .people-grid{ grid-template-columns:1fr; }
+  .malta-box, .deloitte-box, .negmedia-box{ padding:18px 16px; }
+  .sec table.lictable > tbody, .sec table.datatable > tbody{ min-width:520px; }
+}
+@media (max-width:420px){
+  .case-head .sub{ font-size:14.5px; }
+  .brand-card{ padding:16px; }
+  .chip{ font-size:12px; padding:4px 9px; }
+}
+
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#14191f; --paper-alt:#1c232b; --ink:#e6e3d8; --ink-soft:#9aa7b3; --rule:#2e3944;
+    --tab-gold:#c9a36b; --stamp-red:#d6685b; --stamp-green:#6fb28a; --white:#1a2129;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 20px -10px rgba(0,0,0,.6);
+  }
+  .topbar, .toc{ background:rgba(20,25,31,.94); }
+  .note{ color:#f0c9c3; background:rgba(214,104,91,.10); }
+  .folder:hover .go, .toc a:hover, .toc a.active{ color:var(--paper); }
+  ::selection{ background:#4a4326; }
+  .sec-badge.yes, .lic-type.b2c, .lic-type.b2b{ color:#14191f; }
+}
+
+@media (prefers-reduced-motion:reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+@media print{
+  .topbar, .toc{ position:static; } .toc{ display:none; }
+  body{ background:#fff; } .folder, .brand-card, .person{ box-shadow:none; }
+  .sec table.lictable, .sec table.datatable{ display:table; }
 }
